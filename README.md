@@ -1,4 +1,3 @@
-Chào bạn, đây là phần bổ sung cho dự án của nhóm bạn. Tôi đã thêm các kỹ năng và mục tiêu cụ thể cho từng thành viên, giúp làm rõ vai trò và đóng góp của mỗi người.
 
 ## 🛠️ Software Engineering Project – Thiết Kế hệ thống quản lý đặt phòng khách sạn
 
