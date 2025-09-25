@@ -1,4 +1,4 @@
-/* Reset */
+
 * {
   margin: 0; padding: 0;
   box-sizing: border-box;
@@ -9,13 +9,12 @@
   font-weight: bold; 
   margin: 5px 0;}
 
-
 /* Login Form */
 
 /* Styling cho container tổng của trang đăng nhập */
 .login-container {
-    width: 350px; /* Chiều rộng khung đăng nhập */
-    margin: 50px auto; /* Canh giữa và tạo khoảng cách */
+    width: 350px; 
+    margin: 50px auto; 
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -25,19 +24,19 @@
 
 /* Styling cho vùng chứa logo */
 .logo-wrapper {
-    margin-bottom: 20px; /* Khoảng cách giữa logo và form */
+    margin-bottom: 20px; 
     text-align: center;
 }
 
-/* Styling cho ảnh logo */
+
 .logo-wrapper img {
-    max-width: 150px; /* Đặt chiều rộng tối đa cho logo */
-    height: auto; /* Chiều cao tự động điều chỉnh để giữ tỷ lệ */
-    display: block; /* Để loại bỏ khoảng trắng dưới ảnh */
-    margin: 0 auto; /* Canh giữa logo trong vùng chứa của nó */
+    max-width: 150px; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
 }
 
-/* Các styling khác cho form đăng nhập (ví dụ) */
+
 .login-form h2 {
     margin-bottom: 20px;
     color: #333;
@@ -58,7 +57,7 @@
 }
 
 .input-group input {
-    width: calc(100% - 20px); /* 100% trừ padding */
+    width: calc(100% - 20px); 
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -138,7 +137,7 @@
 }
 .remember {
   margin: 10px 0;
-  text-align: left;  /* căn trái nội dung "Ghi nhớ đăng nhập" */
+  text-align: left;  
 }
 .buttons {
   display: flex;
