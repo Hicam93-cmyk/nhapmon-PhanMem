@@ -1,0 +1,264 @@
+/* Reset */
+* {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif ;
+}
+.admin-name {
+  font-size: 20px;   
+  font-weight: bold; 
+  margin: 5px 0;}
+
+
+/* Login Form */
+
+/* Styling cho container tổng của trang đăng nhập */
+.login-container {
+    width: 350px; /* Chiều rộng khung đăng nhập */
+    margin: 50px auto; /* Canh giữa và tạo khoảng cách */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+    text-align: center; 
+}
+
+/* Styling cho vùng chứa logo */
+.logo-wrapper {
+    margin-bottom: 20px; /* Khoảng cách giữa logo và form */
+    text-align: center;
+}
+
+/* Styling cho ảnh logo */
+.logo-wrapper img {
+    max-width: 150px; /* Đặt chiều rộng tối đa cho logo */
+    height: auto; /* Chiều cao tự động điều chỉnh để giữ tỷ lệ */
+    display: block; /* Để loại bỏ khoảng trắng dưới ảnh */
+    margin: 0 auto; /* Canh giữa logo trong vùng chứa của nó */
+}
+
+/* Các styling khác cho form đăng nhập (ví dụ) */
+.login-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+    text-align: left;
+}
+
+.input-group input {
+    width: calc(100% - 20px); /* 100% trừ padding */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.login-form button:hover {
+    background-color: #0056b3;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#4E1F00;
+  width: 100%;
+  min-height: 100vh;  
+  
+  background: url("cc.jpg") no-repeat center center;
+  background-size: cover;   
+}
+
+/* Smartphone */
+@media (max-width: 600px) {
+  .login-box {
+    width: 90%;
+    padding: 15px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .login-box {
+    width: 70%;
+  }
+}
+
+/* Laptop & Desktop */
+@media (min-width: 1025px) {
+  .login-box {
+    width: 300px;
+  }
+}
+
+.login-box {
+  width: clamp(250px, 80%, 400px); 
+  padding: 2rem;
+  background: #F8F4E1;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+}
+
+
+
+.login-box label {
+  display: block;
+  margin: 10px 0 5px;
+  text-align: left;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+.remember {
+  margin: 10px 0;
+  text-align: left;  /* căn trái nội dung "Ghi nhớ đăng nhập" */
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttons button:first-child {
+  background: #4caf50;
+  color: white;
+}
+
+.buttons button:last-child {
+  background: #f44336;
+  color: white;
+}
+
+/* Dashboard */
+.hidden { display: none !important; }
+#dashboard {
+  display: none;
+  height: 100vh;
+}
+
+#dashboard:not(.hidden) {
+  display: flex;
+}
+
+.sidebar {
+  width: 270px;
+  background: #4E1F00;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h3 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);}
+
+.sidebar ul li:last-child {
+  border-bottom: none;
+}
+
+.sidebar ul li a {
+  color: #F8F4E1;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  color: white;
+}
+
+.sidebar button {
+  width: 100%;
+  padding: 10px;
+  background: #f44336;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  background: #F8F4E1;
+}
+
+.content h2 {
+  margin-bottom: 15px;
+}
+
+/* Admin Profile */
+.admin-profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.admin-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid #ffccbc;
+  object-fit: cover; 
+}
+
+.admin-info .admin-name {
+  font-weight: bold;
+  color: #fff;
+}
+
+.admin-info .admin-settings {
+  font-size: 0.85rem;
+  color: #ffccbc;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.admin-info .admin-settings:hover {
+  color: #ffffff;
+}
