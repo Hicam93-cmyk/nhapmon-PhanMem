@@ -128,4 +128,27 @@
   * Nếu nội dung đã bị gỡ bỏ → Hệ thống báo lỗi.
 * **Postcondition**: Viewer xem được nội dung công khai.
 
+##Giải thích Sequence Diagram: Tạo bài viết##
 
+📌 Liên hệ với Use Case “Tạo bài viết”:
+Sequence Diagram minh họa chi tiết luồng tương tác giữa các đối tượng (Content Manager, giao diện nhập bài, bộ điều khiển, và cơ sở dữ liệu) trong quá trình tạo và lưu một bài viết.
+
+**Các bước tương tác trong sơ đồ**
+
+*Content Manager bắt đầu hành động bằng việc chọn chức năng create article() trên hệ thống.*
+→ Đây tương ứng với bước “Content Manager chọn chức năng Tạo bài viết” trong UC.
+
+*CreateArticleForm (giao diện nhập liệu) xuất hiện và cho phép Content Manager điền thông tin. Sau đó, form gửi dữ liệu bằng hành động submit form() đến ArticleController.*
+→ Liên hệ với UC: nhập tiêu đề, nội dung, hình ảnh/video rồi nhấn nút Submit.
+ArticleController nhận dữ liệu, thực hiện gọi hàm save article() để lưu xuống Database.
+
+*Tại Database, có hai khả năng xảy ra:*
+1.Trường hợp thành công: Database phản hồi article saved().
+2.Trường hợp thất bại: Database trả về error message().
+
+Nếu lưu thành công, ArticleController gửi lại success message() về CreateArticleForm.
+Giao diện hiển thị thông báo “Bài viết đã được lưu thành công”.
+Đây chính là luồng Main flow trong UC.
+Nếu lưu thất bại, ArticleController gửi lại display error() cho CreateArticleForm.
+Giao diện hiển thị thông báo lỗi.
+Đây chính là luồng Alternative flow trong UC (lưu thất bại → người dùng được thông báo lỗi).
