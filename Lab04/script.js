@@ -1,4 +1,4 @@
-// Xử lý login
+
 document.getElementById("loginForm").addEventListener("submit", function(e){
   e.preventDefault();
   
@@ -15,7 +15,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e){
     return;
   }
 
-  // Lưu localStorage nếu chọn Remember me
+  
   if(remember){
     localStorage.setItem("savedUser", user);
   } else {
@@ -86,6 +86,6 @@ function logActivity(username, action) {
   console.log(`${time} - ${username}: ${action}`);
 }
 
-// Ví dụ:
+
 logActivity("admin1", "Đăng nhập hệ thống");
 logActivity("editor1", "Chỉnh sửa bài viết #123");
