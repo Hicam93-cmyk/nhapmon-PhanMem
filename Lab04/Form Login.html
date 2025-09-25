@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Cổng truyền thông số - Chuỗi Cafe T.G </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Form Login -->
+  <div id="login-container" class="container">
+    <form id="loginForm" class="login-box">
+        <!-- Logo -->
+         <div class="login-container">
+    <div class="logo-wrapper">
+        <img src="logo.jpeg" alt="Logo TG Cafe">
+    </div>
+    <form class="loginForm">
+   
+    <h2>Đăng nhập hệ thống</h2>
+
+    <label for="username">Tên đăng nhập</label>
+    <input type="text" id="username" >
+
+    <label for="password">Mật khẩu</label>
+    <input type="password" id="password" >
+
+    <div class="remember">
+      <input type="checkbox" id="rememberMe">
+      <label for="rememberMe">Ghi nhớ đăng nhập</label>
+    </div>
+
+    <div class="buttons">
+      <button type="submit">Login</button>
+      <button type="button" id="cancelBtn">Cancel</button>
+    </div>
+  </form>
+</div>
+    </form>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" class="hidden">
+    <aside class="sidebar">
+      <!-- Avatar admin -->
+      <div class="admin-profile">
+        <img src="avta.jpg" alt="Admin Avatar" class="admin-avatar">
+        <div class="admin-info">
+          <p class="admin-name">☕ Cafe T.G</p>
+          <a href="#" class="admin-settings">Quản lý tài khoản</a>
+        </div>
+      </div>
+
+      <ul>
+        <li><a href="#" onclick="showSection('posts')">Quản lý Bài viết</a></li>
+        <li><a href="#" onclick="showSection('menu')">Quản lý Menu</a></li>
+        <li><a href="#" onclick="showSection('customers')">Quản lý Khách hàng</a></li>
+        <li><a href="#" onclick="showSection('stats')">Báo cáo & Thống kê</a></li>
+      </ul>
+      <button onclick="logout()">Đăng xuất</button>
+    </aside>
+
+    <main class="content">
+      <h2 id="section-title">Chào mừng bạn đến với hệ thống</h2>
+      <div id="section-content">
+        <p>Vui lòng chọn một chức năng từ menu bên trái để quản trị.</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
