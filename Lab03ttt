@@ -1,0 +1,131 @@
+# 📑 Use Case Descriptions
+## 1. Quản lý Bài viết
+### Use Case: Tạo bài viết
+* **Mục đích**: Cho phép Content Manager tạo mới một bài viết.
+* **Tác nhân chính**: Content Manager
+* **Điều kiện tiên quyết**: Content Manager đã đăng nhập vào hệ thống.
+* **Luồng sự kiện chính**:
+  1. Content Manager chọn chức năng “Tạo bài viết”.
+  2. Nhập tiêu đề, nội dung, gắn thẻ, thêm hình ảnh hoặc video minh họa.
+  3. Lưu bài viết dưới dạng “nháp” hoặc gửi phê duyệt.
+* **Luồng thay thế**:
+  * Nếu dữ liệu nhập không hợp lệ (thiếu tiêu đề, nội dung trống) → Hệ thống báo lỗi.
+* **Điều kiện kết thúc**: Bài viết được lưu thành công và sẵn sàng để chỉnh sửa/xuất bản.
+### Use Case: Chỉnh sửa bài viết
+* **Mục đích**: Cho phép Content Manager chỉnh sửa bài viết đã tạo.
+* **Tác nhân chính**: Content Manager
+* **Precondition**: Bài viết tồn tại trong hệ thống.
+* **Main Flow**:
+  1. Content Manager mở danh sách bài viết.
+  2. Chọn một bài viết → sửa tiêu đề, nội dung, hình ảnh.
+  3. Lưu lại bản chỉnh sửa.
+* **Alternative Flow**:
+  * Nếu không có quyền chỉnh sửa → Hệ thống từ chối.
+* **Postcondition**: Bài viết được cập nhật.
+### Use Case: Xóa bài viết
+* **Mục đích**: Xóa bài viết không còn cần thiết.
+* **Tác nhân chính**: Content Manager hoặc Admin
+* **Precondition**: Bài viết tồn tại.
+* **Main Flow**:
+  1. Actor chọn “Xóa bài viết”.
+  2. Hệ thống hiển thị cảnh báo.
+  3. Actor xác nhận → Bài viết bị xóa.
+* **Alternative Flow**:
+  * Nếu Actor hủy thao tác → Bài viết vẫn giữ nguyên.
+* **Postcondition**: Bài viết bị xóa khỏi hệ thống.
+### Use Case: Lập lịch xuất bản
+* **Mục đích**: Đặt thời gian tự động xuất bản bài viết.
+* **Tác nhân chính**: Content Manager
+* **Precondition**: Bài viết đã tồn tại.
+* **Main Flow**:
+  1. Content Manager chọn “Lập lịch xuất bản”.
+  2. Nhập ngày giờ xuất bản.
+  3. Hệ thống lưu lịch hẹn.
+* **Alternative Flow**:
+  * Nếu thời gian không hợp lệ (quá khứ) → Thông báo lỗi.
+* **Postcondition**: Lịch xuất bản được thiết lập.
+### Use Case: Xuất bản bài viết
+* **Mục đích**: Đưa bài viết ra công khai cho Viewer xem.
+* **Tác nhân chính**: Content Manager
+* **Precondition**: Bài viết đã được duyệt.
+* **Main Flow**:
+  1. Chọn chức năng “Xuất bản”.
+  2. Hệ thống kiểm tra duyệt.
+  3. Bài viết được đăng công khai.
+  4. <<include>> Đồng bộ lên mạng xã hội.
+* **Alternative Flow**:
+  * Nếu chưa được Admin duyệt → Bài viết không xuất bản.
+* **Postcondition**: Bài viết công khai trên hệ thống (và mạng xã hội).
+### Use Case: Đồng bộ mạng xã hội (Include)
+* **Mục đích**: Tự động đăng bài viết sang các nền tảng MXH.
+* **Tác nhân chính**: Hệ thống (include khi xuất bản).
+* **Precondition**: Hệ thống kết nối với MXH thành công.
+* **Main Flow**:
+  1. Sau khi xuất bản, hệ thống gửi dữ liệu sang Facebook, Zalo, TikTok...
+  2. Bài viết hiển thị trên các nền tảng.
+* **Alternative Flow**:
+  * Nếu kết nối lỗi → Hệ thống thông báo, yêu cầu Content Manager xử lý thủ công.
+* **Postcondition**: Bài viết được đồng bộ đa kênh.
+## 2. Quản lý Hình ảnh
+### Use Case: Tải hình ảnh lên
+* **Mục đích**: Cho phép Content Manager upload hình ảnh.
+* **Tác nhân chính**: Content Manager
+* **Precondition**: Đã đăng nhập.
+* **Main Flow**:
+  1. Chọn chức năng “Tải hình ảnh”.
+  2. Chọn file ảnh từ thiết bị.
+  3. Nhập metadata (tiêu đề, mô tả).
+  4. Lưu vào hệ thống.
+* **Alternative Flow**:
+  * Nếu file quá lớn hoặc định dạng sai → Báo lỗi.
+* **Postcondition**: Hình ảnh được lưu trữ
+### Use Case: Quản lý hình ảnh
+* **Mục đích**: Cho phép Content Manager xem, chỉnh sửa, đổi tên, xóa ảnh.
+* **Tác nhân chính**: Content Manager
+* **Precondition**: Có ảnh trong hệ thống.
+* **Main Flow**:
+  1. Mở “ThU viện hình ảnh”.
+  2. Thực hiện thao tác chỉnh sửa (đổi tên, sửa metadata, xóa).
+  3. Lưu thay đổi.
+* **Alternative Flow**:
+  * Nếu ảnh bị khóa (đang dùng trong bài viết) → Không cho xóa.
+* **Postcondition**: Hình ảnh được cập nhật hoặc xóa.
+## 3. Quản lý Video
+### Use Case: Tải video lên
+* **Mục đích**: Upload video vào hệ thống.
+* **Tác nhân chính**: Content Manager
+* **Precondition**: Đã đăng nhập.
+* **Main Flow**:
+  1. Chọn “Tải video”.
+  2. Upload file từ thiết bị.
+  3. Nhập thông tin mô tả.
+  4. Lưu lại.
+* **Alternative Flow**:
+
+  * Nếu dung lượng vượt giới hạn → Báo lỗi.
+* **Postcondition**: Video lưu trữ thành công.
+### Use Case: Quản lý video
+* **Mục đích**: Quản lý video đã upload (xem, đổi tên, chỉnh sửa metadata, xóa).
+* **Tác nhân chính**: Content Manager
+* **Precondition**: Video tồn tại.
+* **Main Flow**:
+  1. Chọn “Quản lý video”.
+  2. Thực hiện thao tác mong muốn.
+  3. Lưu thay đổi.
+* **Alternative Flow**:
+  * Nếu video đang gắn vào bài viết → Không cho xóa.
+* **Postcondition**: Video được cập nhật hoặc xóa.
+## 4. Viewer (Người dùng cuối)
+### Use Case: Xem bài viết / Xem hình ảnh / Xem video
+* **Mục đích**: Viewer có thể xem nội dung công khai.
+* **Tác nhân chính**: Viewer
+* **Precondition**: Nội dung đã được xuất bản.
+* **Main Flow**:
+  1. Viewer truy cập website.
+  2. Chọn danh mục (bài viết / ảnh / video).
+  3. Xem nội dung chi tiết.
+* **Alternative Flow**:
+  * Nếu nội dung đã bị gỡ bỏ → Hệ thống báo lỗi.
+* **Postcondition**: Viewer xem được nội dung công khai.
+
+
