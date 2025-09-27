@@ -24,4 +24,3 @@ Mục tiêu là áp dụng quy trình phát triển phần mềm, từ **phân t
 * Hoàn thành và bàn giao hệ thống quản lý đặt phòng khách sạn đúng thời hạn.
 * Áp dụng thành công mô hình phát triển Agile – Scrum để quản lý quy trình làm việc.
 * Xây dựng một sản phẩm đáp ứng đầy đủ các yêu cầu đã đề ra trong phần phân tích.
-![image alt](https://github.com/Hicam93-cmyk/nhapmon-PhanMem/blob/ad59f4cf522aa7f55d6a1a9da4a3b1601b5ee4db/Use%20Case%20Diagram.png)
