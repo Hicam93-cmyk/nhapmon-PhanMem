@@ -1,0 +1,36 @@
+@startuml
+package Admin {
+    [UserPermissionManager]
+}
+
+package CMS_Controller {
+    [Content Review Logic]
+    [Publish Scheduler]
+    [Comment Moderator]
+}
+
+package Marketing_Service {
+    [Campaign Planner]
+    [Livestream Manager]
+}
+
+package Analytics_Engine {
+    [SEO Optimizer]
+    [Web Vitals Tracker]
+    [Access & Behavior Logger]
+}
+
+package External_Adapter {
+    [Social Media API]
+    [Social Login Gateway]
+}
+
+' Quan hệ phụ thuộc (Dependencies) '
+CMS_Controller .> Marketing_Service : schedules/uses content for campaigns
+CMS_Controller .> External_Adapter : posts to platforms
+Marketing_Service .> External_Adapter : initiates streams/social posting
+Analytics_Engine .> CMS_Controller : tracks content performance
+
+Admin --> CMS_Controller : grants access
+Admin --> Analytics_Engine : views high-level reports
+@enduml
