@@ -1,69 +1,53 @@
 @startuml
-class SystemAdmin {
-    + adminId : String
-    + manageUserPermissions(user:User, role:String)
-    + fullSystemControl()
-}
-
+' Lớp chính từ Sequence Diagram '
 class ContentManager {
     + managerId : String
     + name : String
-    + createCampaign(details:String) : Campaign
-    + createLivestream(details:String) : Livestream
-    + scheduleContent(content:Content, platform:String)
+    + create() : ArticleForm
 }
 
-class Content {
-    + contentId : int
+class ArticleForm {
     + title : String
-    + body : String
-    + publishDate : DateTime
+    + contentBody : String
+    + submit() : boolean
+}
+
+class ArticleController {
+    + saveArticle(form:ArticleForm) : boolean
+    + review(article:Article)
+}
+
+class ArticleRepository {
+    + save(article:Article) : boolean
+    + findById(id:int) : Article
+}
+
+class Article {
+    + articleId : int
+    + title : String
+    + contentBody : String
     + status : String // Draft, Pending, Published
 }
 
-class Comment {
-    + commentId : int
-    + userId : String
-    + content : String
-    + reviewStatus : String // Pending, Approved, Rejected
-    + commentTime : DateTime
-}
-
+' Lớp bổ sung từ Use Case Diagram '
 class Campaign {
     + campaignId : int
     + name : String
-    + type : String // Promotion, Event, Product Launch
-    + budget : double
-}
-
-class Livestream {
-    + streamId : int
-    + url : String
-    + platform : String
-    + startTime : DateTime
-    + viewersCount : int
+    + type : String
 }
 
 class AnalyticsReport {
     + reportId : int
-    + metrics : Map<String, Double> // Access, Behavior, Position
+    + metrics : Map<String, Double>
     + generateSEOReport()
-    + trackUserBehavior()
 }
 
-class SocialPlatform {
-    + platformId : String
-    + name : String // FB, Zalo, TikTok, YouTube
-    + postContent(content:Content) : Boolean
-}
+' QUAN HỆ '
+ContentManager "1" --> "1" ArticleForm : creates
+ArticleForm "1" --> "1" ArticleController : submits_to
+ArticleController "1" --> "1" ArticleRepository : uses
+ArticleRepository "1" -- "0..*" Article : manages
+ArticleController "1" -- "0..*" Campaign : manages
+ArticleController "1" -- "1" AnalyticsReport : tracks
 
-' Quan hệ (Associations) '
-SystemAdmin "1" -- "0..*" ContentManager : manages/grants permission
-ContentManager "1" -- "0..*" Content : creates
-ContentManager "1" -- "0..*" Campaign : manages
-ContentManager "1" -- "0..*" Livestream : initiates
-ContentManager "1" -- "0..*" AnalyticsReport : views
-SystemAdmin "1" -- "0..*" Comment : manages/reviews
-Content "1" -- "0..*" Comment : has_comments
-Content "1" --> "0..*" SocialPlatform : posts_to
 @enduml
