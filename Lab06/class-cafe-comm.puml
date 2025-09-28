@@ -1,0 +1,69 @@
+@startuml
+class SystemAdmin {
+    + adminId : String
+    + manageUserPermissions(user:User, role:String)
+    + fullSystemControl()
+}
+
+class ContentManager {
+    + managerId : String
+    + name : String
+    + createCampaign(details:String) : Campaign
+    + createLivestream(details:String) : Livestream
+    + scheduleContent(content:Content, platform:String)
+}
+
+class Content {
+    + contentId : int
+    + title : String
+    + body : String
+    + publishDate : DateTime
+    + status : String // Draft, Pending, Published
+}
+
+class Comment {
+    + commentId : int
+    + userId : String
+    + content : String
+    + reviewStatus : String // Pending, Approved, Rejected
+    + commentTime : DateTime
+}
+
+class Campaign {
+    + campaignId : int
+    + name : String
+    + type : String // Promotion, Event, Product Launch
+    + budget : double
+}
+
+class Livestream {
+    + streamId : int
+    + url : String
+    + platform : String
+    + startTime : DateTime
+    + viewersCount : int
+}
+
+class AnalyticsReport {
+    + reportId : int
+    + metrics : Map<String, Double> // Access, Behavior, Position
+    + generateSEOReport()
+    + trackUserBehavior()
+}
+
+class SocialPlatform {
+    + platformId : String
+    + name : String // FB, Zalo, TikTok, YouTube
+    + postContent(content:Content) : Boolean
+}
+
+' Quan hệ (Associations) '
+SystemAdmin "1" -- "0..*" ContentManager : manages/grants permission
+ContentManager "1" -- "0..*" Content : creates
+ContentManager "1" -- "0..*" Campaign : manages
+ContentManager "1" -- "0..*" Livestream : initiates
+ContentManager "1" -- "0..*" AnalyticsReport : views
+SystemAdmin "1" -- "0..*" Comment : manages/reviews
+Content "1" -- "0..*" Comment : has_comments
+Content "1" --> "0..*" SocialPlatform : posts_to
+@enduml
