@@ -1,36 +1,36 @@
 @startuml
-package Admin {
-    [UserPermissionManager]
+
+skinparam packageStyle rectangle
+skinparam arrowThickness 2
+
+' Định nghĩa các gói chính '
+package UI as "Giao diện (UI)" {
+    [ArticleForm]
 }
 
-package CMS_Controller {
-    [Content Review Logic]
-    [Publish Scheduler]
-    [Comment Moderator]
+package Controller {
+    [ArticleController]
 }
 
-package Marketing_Service {
+package CoreService as "Dịch vụ Lỗi/Nghiệp vụ" {
     [Campaign Planner]
-    [Livestream Manager]
+    [Review Service]
+    [Analytics Engine]
 }
 
-package Analytics_Engine {
-    [SEO Optimizer]
-    [Web Vitals Tracker]
-    [Access & Behavior Logger]
+package DataStore as "Kho dữ liệu" {
+    [ArticleRepository]
+    [Article]
 }
 
-package External_Adapter {
+package ExternalAdapter as "Bộ điều hợp Mạng xã hội" {
     [Social Media API]
-    [Social Login Gateway]
 }
 
-' Quan hệ phụ thuộc (Dependencies) '
-CMS_Controller .> Marketing_Service : schedules/uses content for campaigns
-CMS_Controller .> External_Adapter : posts to platforms
-Marketing_Service .> External_Adapter : initiates streams/social posting
-Analytics_Engine .> CMS_Controller : tracks content performance
+' QUAN HỆ PHỤ THUỘC '
+UI -down-> Controller
+Controller -right-> CoreService : <<điều phối>>
+CoreService -down-> DataStore : <<truy cập dữ liệu>>
+CoreService -right-> ExternalAdapter : <<xuất bản đa kênh>>
 
-Admin --> CMS_Controller : grants access
-Admin --> Analytics_Engine : views high-level reports
 @enduml
