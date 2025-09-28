@@ -1,5 +1,4 @@
 @startuml
-' Lớp chính từ Sequence Diagram '
 class ContentManager {
     + managerId : String
     + name : String
@@ -29,7 +28,6 @@ class Article {
     + status : String // Draft, Pending, Published
 }
 
-' Lớp bổ sung từ Use Case Diagram '
 class Campaign {
     + campaignId : int
     + name : String
