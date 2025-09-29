@@ -1,0 +1,7 @@
+##Push code từ GitBash
+cd nhapmon-PhanMem
+-Kiểm tra trạng thái:
+git status
+-Tạo tag và push:
+git tag -a v1.0 -m "Release v1.0"
+git push origin v1.0
