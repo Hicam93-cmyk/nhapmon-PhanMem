@@ -21,6 +21,6 @@ Mục tiêu là áp dụng quy trình phát triển phần mềm, từ **phân t
     * **Mục tiêu cá nhân:** Tìm và báo cáo lỗi một cách chi tiết, đảm bảo chất lượng sản phẩm cuối cùng trước khi bàn giao.
 
 ### 🎯 Mục tiêu chung của dự án
-* Hoàn thành và bàn giao hệ thống quản lý đặt phòng khách sạn đúng thời hạn.
+* Hoàn thành và bàn giao hệ thống quản lý  quản trị "Cổng truyền thông số chuỗi cafe" đúng thời hạn.
 * Áp dụng thành công mô hình phát triển Agile – Scrum để quản lý quy trình làm việc.
 * Xây dựng một sản phẩm đáp ứng đầy đủ các yêu cầu đã đề ra trong phần phân tích.
