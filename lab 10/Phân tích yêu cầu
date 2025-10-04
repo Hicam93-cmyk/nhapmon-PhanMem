@@ -1,0 +1,49 @@
+# Use Case Description: Quản lý Nội dung & Duyệt bài (Admin)
+
+---
+⚙️ **Tên Use Case:** Quản lý Nội dung & Duyệt bài (Content & Approval Management)
+
+- **Mục đích:** Giúp Admin kiểm soát chất lượng nội dung và quản lý các tài khoản người dùng trên hệ thống trước khi xuất bản, đảm bảo nội dung tuân thủ chính sách của chuỗi cà phê.
+
+- **Tác nhân chính:** Admin (System Administrator)
+
+- **Điều kiện tiên quyết:** Admin đã đăng nhập vào hệ thống với quyền quản trị tối cao.
+
+- **Luồng sự kiện chính (Basic Flow):**
+  1. Admin đăng nhập vào hệ thống.
+  2. Hệ thống hiển thị giao diện quản trị CMS.
+  3. Admin truy cập mục **Phân quyền người dùng** để tạo, chỉnh sửa và gán quyền cho các tài khoản người dùng khác (ví dụ: gán vai trò Content Manager).
+  4. Admin truy cập mục **Duyệt bài** để xem các nội dung đang chờ phê duyệt.
+  5. Admin xem xét nội dung (bài viết, hình ảnh, video) đã được Content Manager tạo.
+  6. Admin **chấp thuận (Approve)** hoặc **từ chối (Reject)** nội dung.
+  7. Admin đăng xuất khỏi hệ thống.
+
+- **Luồng sự kiện thay thế (Alternative Flows):**
+
+  * **A1. Quản lý Bình luận:** Admin truy cập mục Quản lý Bình luận và thực hiện xem xét, sau đó **xóa hoặc ẩn** các bình luận không phù hợp.
+  * **A2. Nội dung bị từ chối:** Nếu Admin **từ chối phê duyệt** nội dung, nội dung sẽ được chuyển về trạng thái **"Cần sửa đổi"** và hệ thống thông báo cho Content Manager.
+# Use Case Description: Xuất bản Nội dung Đa kênh (Content Manager)
+
+---
+⏰ **Tên Use Case:** Xuất bản Nội dung Đa kênh (Multi-Channel Publishing)
+
+- **Mục đích:** Giúp Content Manager đăng tải nội dung đã được tạo lên nhiều nền tảng xã hội khác nhau và thiết lập lịch trình từ một giao diện duy nhất.
+
+- **Tác nhân chính:** Content Manager
+
+- **Điều kiện tiên quyết:** Content Manager đã đăng nhập vào hệ thống.
+
+- **Luồng sự kiện chính (Basic Flow):**
+  1. Content Manager đăng nhập vào hệ thống.
+  2. Hệ thống hiển thị giao diện quản lý nội dung.
+  3. Content Manager thực hiện **Tạo Nội dung Mới** (Bài viết, Hình ảnh, Video) <<include>>.
+  4. Content Manager **chọn các nền tảng** muốn xuất bản (ví dụ: Facebook, Zalo, YouTube).
+  5. Content Manager **lập lịch xuất bản** nội dung vào một thời điểm cụ thể.
+  6. Hệ thống tự động đăng nội dung lên các nền tảng đã chọn theo lịch trình.
+  7. Nếu là video, Content Manager có thể nhúng video từ YouTube/TikTok vào website.
+  8. Content Manager đăng xuất khỏi hệ thống.
+
+- **Luồng sự kiện thay thế (Alternative Flows):**
+
+  * **A1. Xuất bản Ngay lập tức:** Nếu Content Manager không lập lịch, nội dung sẽ được xuất bản ngay lập tức sau khi hoàn tất.
+  * **A2. Lỗi kết nối:** Nếu kết nối với nền tảng mạng xã hội bị lỗi, hệ thống sẽ **thông báo lỗi** và Content Manager có thể thử lại hoặc xử lý thủ công.
