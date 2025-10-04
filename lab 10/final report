@@ -1,0 +1,167 @@
+
+# 📝 BÁO CÁO CUỐI KỲ  
+## HỆ THỐNG QUẢN TRỊ CỔNG TRUYỀN THÔNG CHUỖI CÀ PHÊ **T.G**
+
+---
+
+## 🧩 1. GIỚI THIỆU DỰ ÁN
+
+Dự án này là sản phẩm cuối kỳ của môn **Nhập môn Công nghệ Phần mềm**, áp dụng toàn bộ quy trình phát triển phần mềm từ **phân tích – thiết kế – lập trình – kiểm thử – triển khai**, nhằm xây dựng **hệ thống quản trị tập trung** cho chuỗi cà phê T.G.
+
+### 🎯 1.1. Mục tiêu Dự án
+- Xây dựng **hệ thống quản trị nội dung và nghiệp vụ (POS/Order Management)** tập trung.  
+- Áp dụng **mô hình Agile – Kanban** trong quản lý tiến độ (Lab 09).  
+- Đảm bảo chất lượng thông qua **Unit Testing và Integration Testing** (Lab 08).
+
+### 👥 1.2. Thành viên nhóm
+
+| Họ tên | Vai trò | Trách nhiệm chính |
+| :--- | :--- | :--- |
+| [Tên Thành viên 1] | Leader | Lập kế hoạch, Phân tích yêu cầu, Quản lý tiến độ. |
+| [Tên Thành viên 2] | Developer | Lập trình module nghiệp vụ (Lab 07), Thiết kế CSDL. |
+| [Tên Thành viên 3] | Tester/Dev | Thiết kế giao diện (Lab 04), Viết Test Case (Lab 08). |
+
+---
+
+## ⚙️ 2. PHÂN TÍCH & THIẾT KẾ HỆ THỐNG (UML)
+
+### 🔹 2.1. Phân tích Yêu cầu – Use Case Diagram (Lab 02)
+Hệ thống tập trung vào 3 tác nhân chính:
+- **Admin**: Quản trị toàn bộ hệ thống, người dùng và chi nhánh.  
+- **Content Manager**: Quản lý bài viết, menu, khuyến mãi.  
+- **Viewer/Hệ thống**: Xem nội dung và truy cập thông tin cửa hàng.
+
+
+---
+
+### 🔹 2.2. Thiết kế Luồng Tương tác – Sequence Diagram (Lab 03)
+- **Chức năng minh họa:** `Tạo và Xử lý Đơn hàng`
+- Sequence Diagram mô tả luồng giao tiếp giữa:
+  - `UI` (Form đặt hàng),
+  - `Controller/Service` (xử lý logic),
+  - `Database` (lưu đơn hàng và cập nhật tồn kho).
+
+
+---
+
+### 🔹 2.3. Thiết kế Cấu trúc Lớp – Class Diagram (Lab 06)
+- **Các lớp chính:**  
+  `User (role)`, `Product`, `Order`, `Inventory`, `Transaction`.  
+- Thiết kế này là cơ sở cho việc xây dựng **CSDL quan hệ (ERD)**.
+
+
+
+---
+
+## 💻 3. PHÁT TRIỂN MODULE & KIỂM THỬ
+
+### 🧱 3.1. Giao diện Form Login (Lab 04)
+- **Công nghệ:** HTML, CSS, JavaScript.  
+- **Mục tiêu:** Đăng nhập và kiểm tra thông tin người dùng.  
+- **Kết quả:** Giao diện thân thiện, hoạt động đúng logic đăng nhập.
+
+```html
+<form id="loginForm">
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+  <button type="submit">Login</button>
+</form>
+````
+
+---
+
+### ⚙️ 3.2. Module Nghiệp vụ – Xử lý Đơn hàng (Lab 07)
+
+* **Tên module:** `create_order`
+* **Chức năng:**
+
+  * Kiểm tra tồn kho.
+  * Ghi nhận đơn hàng vào hệ thống.
+  * Cập nhật tồn kho (trừ số lượng).
+  * **Rollback nếu tồn kho không đủ.**
+
+```python
+def create_order(product_id, quantity):
+    if inventory[product_id] >= quantity:
+        inventory[product_id] -= quantity
+        save_order(product_id, quantity)
+        return "Order successful!"
+    else:
+        raise Exception("Not enough stock")
+```
+
+---
+
+### 🧪 3.3. Kiểm thử – Unit & Integration Test (Lab 08)
+
+* **Unit Test:**
+
+  * Test các hàm `login` và `create_order`.
+  * Kết quả: ✅ Passed **[xx%]** (ví dụ: 90%).
+
+* **Integration Test:**
+
+  * Dùng Selenium kiểm tra toàn luồng từ giao diện `login.html` đến xử lý backend.
+
+
+
+---
+
+## 📊 4. QUẢN LÝ DỰ ÁN VỚI AGILE (KANBAN – Lab 09)
+
+### 🗂️ 4.1. Tổ chức Board & Backlog
+
+* **Epic chính:**
+
+  * `Order Management`
+  * `User & Branch Management`
+* **Board Kanban:**
+
+  * Cột: `TO DO`, `IN PROGRESS`, `DONE`.
+* **Sprint 1:** `Login & Order Creation`
+
+
+---
+
+### 📈 4.2. Báo cáo Sprint 1 (Phân tích luồng công việc)
+
+| Mục tiêu    | Phân tích                                                                                | Kết luận                             |
+| :---------- | :--------------------------------------------------------------------------------------- | :----------------------------------- |
+| **Tiến độ** | Các task `Login` và `US1` vẫn ở cột **TO DO/IN PROGRESS**, cho thấy tiến độ bị chậm.     | Cần đẩy nhanh việc lập trình.        |
+| **Phạm vi** | Có hiện tượng **Scope Drift** – Task `US4: Phân quyền` bị kéo vào Sprint ngoài kế hoạch. | Tập trung lại vào nhiệm vụ chính.    |
+| **Bài học** | Cần họp daily để xử lý blockers và tuân thủ phạm vi Sprint.                              | Cải thiện giao tiếp và kỷ luật nhóm. |
+
+---
+
+## 🎬 5. KẾT LUẬN & DEMO CUỐI KỲ
+
+### ✅ 5.1. Kết quả đạt được
+
+* Hoàn thiện toàn bộ **Artifacts UML, CSDL, Test và Jira Agile.**
+* Xây dựng thành công **module nghiệp vụ cốt lõi** (`create_order`).
+* Hiểu và áp dụng được quy trình **Agile – Kanban** trong thực tế.
+
+---
+
+### 🧭 5.2. Hướng dẫn DEMO (Lab 10)
+
+| Bước               | Hành động                                                 | Chứng minh                          |
+| :----------------- | :-------------------------------------------------------- | :---------------------------------- |
+| **1. Demo Login**  | Chạy `login.html` và đăng nhập.                           | Thể hiện chức năng UI (Lab 04, 08). |
+| **2. Demo Module** | Chạy script `create_order`. Hiển thị tồn kho trước & sau. | Thể hiện logic nghiệp vụ (Lab 07).  |
+| **3. Demo Jira**   | Trình bày Board Kanban và trạng thái Sprint.              | Thể hiện quản lý Agile (Lab 09).    |
+
+---
+
+## 📚 PHỤ LỤC
+
+* **Link Repo GitHub:** `[chèn link dự án tại đây]`
+* **Link Jira Board:** `[chèn link Jira tại đây]`
+* **Tài liệu tham khảo:** Tài liệu môn học + hướng dẫn Jira, UML, Selenium.
+
+---
+
+> 📌 *Báo cáo được thực hiện bởi nhóm sinh viên lớp Nhập môn Công nghệ Phần mềm – Học viện Công nghệ Bưu chính Viễn thông (CS Hồ Chí Minh).*
+
+```
+
