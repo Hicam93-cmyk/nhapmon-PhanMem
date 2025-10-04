@@ -1,0 +1,70 @@
+# 📝 BÁO CÁO CUỐI KỲ  
+## HỆ THỐNG QUẢN TRỊ CỔNG TRUYỀN THÔNG CHUỖI CÀ PHÊ **T.G**
+
+---
+
+## 1. GIỚI THIỆU DỰ ÁN
+
+Dự án này là sản phẩm cuối kỳ của môn **Nhập môn Công nghệ Phần mềm**, áp dụng toàn bộ quy trình phát triển phần mềm từ **phân tích – thiết kế – lập trình – kiểm thử – triển khai**, nhằm xây dựng **hệ thống quản trị tập trung** cho chuỗi cà phê T.G.
+
+### 1.1. Mục tiêu Dự án
+- Xây dựng **hệ thống quản trị nội dung và nghiệp vụ (POS/Order Management)** tập trung.  
+- Áp dụng **mô hình Agile – Kanban** trong quản lý tiến độ (Lab 09).  
+- Đảm bảo chất lượng thông qua **Unit Testing và Integration Testing** (Lab 08).
+
+### 1.2. Thành viên nhóm
+
+| Họ tên | Vai trò | Trách nhiệm chính |
+| :--- | :--- | :--- |
+| [Tên Thành viên 1] | Leader | Lập kế hoạch, phân tích yêu cầu, quản lý tiến độ. |
+| [Tên Thành viên 2] | Developer | Lập trình module nghiệp vụ (Lab 07), thiết kế CSDL. |
+| [Tên Thành viên 3] | Tester/Dev | Thiết kế giao diện (Lab 04), viết Test Case (Lab 08). |
+
+---
+
+## 2. PHÂN TÍCH & THIẾT KẾ HỆ THỐNG (UML)
+
+### 2.1. Phân tích Yêu cầu – Use Case Diagram (Lab 02)
+Hệ thống có 3 tác nhân chính:
+- **Admin**: Quản trị hệ thống, người dùng, chi nhánh.  
+- **Content Manager**: Quản lý bài viết, menu, khuyến mãi.  
+- **Viewer/Hệ thống**: Xem nội dung và thông tin cửa hàng.
+
+> *Ảnh minh họa:*  
+> `![Use Case Diagram](assets/usecase.png)`
+
+---
+
+### 2.2. Thiết kế Luồng Tương tác – Sequence Diagram (Lab 03)
+- **Chức năng minh họa:** `Tạo và Xử lý Đơn hàng`  
+- Mô tả luồng giữa:
+  - `UI` – giao diện người dùng,  
+  - `Controller/Service` – xử lý logic,  
+  - `Database` – lưu đơn hàng và cập nhật tồn kho.
+
+> *Ảnh minh họa:*  
+> `![Sequence Diagram](assets/sequence.png)`
+
+---
+
+### 2.3. Thiết kế Cấu trúc Lớp – Class Diagram (Lab 06)
+- **Các lớp chính:**  
+  `User (role)`, `Product`, `Order`, `Inventory`, `Transaction`.
+
+> *Ảnh minh họa:*  
+> `![Class Diagram](assets/classdiagram.png)`
+
+---
+
+## 3. PHÁT TRIỂN MODULE & KIỂM THỬ
+
+### 3.1. Giao diện Form Login (Lab 04)
+**Công nghệ:** HTML, CSS, JavaScript  
+**Mục tiêu:** Đăng nhập và kiểm tra thông tin người dùng.  
+
+```html
+<form id="loginForm">
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+  <button type="submit">Login</button>
+</form>
