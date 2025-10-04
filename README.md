@@ -32,10 +32,11 @@ Mục tiêu là áp dụng toàn bộ quy trình phát triển phần mềm theo
 ---
 
 ## 📐 Thiết kế hệ thống (Các Artifacts)
-- **Use Case Diagram**: ![Use Case Diagram](./docs/usecase.png)
-- **Sequence Diagram**: ![Sequence Diagram](./docs/sequence.png)
-- **Class Diagram**: ![Class Diagram](./docs/class_diagram.png)
-- **ERD (Entity Relationship Diagram)**: ![ERD Diagram](./docs/erd.png)
+- **Use Case Diagram**:[Use Case Diagram](Lab02/Use%20Case%20Diagram.png)
+- **Sequence Diagram**:[Sequence Diagram](Lab03/Sequence%20Diagram.png)
+- **Class Diagram**:[Class Diagram](Lab06/class-cafe.png)
+- **ERD (Entity Relationship Diagram)**:[ERD Diagram](Lab06/package-diagram.png)
+
 
 ---
 
