@@ -1,0 +1,82 @@
+@startuml
+'==============================
+' Cấu hình để bố cục dọc, đường nối thẳng
+'==============================
+skinparam linetype ortho
+skinparam classAttributeIconSize 0
+top to bottom direction
+hide circle
+
+'==============================
+' Các lớp chính
+'==============================
+class HệThống {
+  - danhSáchBàiViết : List<BàiViết>
+  - danhSáchNhânViên : List<NhânViênTruyềnThông>
+  - danhSáchChiNhánh : List<QuảnLýChiNhánh>
+  + đăngNhập(email:String, mậtKhẩu:String) : boolean
+  + tìmBàiViết(từKhóa:String) : List<BàiViết>
+}
+
+class NhânViênTruyềnThông {
+  - nhânViênId : int
+  - họTên : String
+  - email : String
+  - vaiTrò : String
+  + tạoBàiViết(tiêuĐề:String, nộiDung:String) : BàiViết
+  + chỉnhSửaBàiViết(bài:BàiViết)
+  + duyệtBài(bài:BàiViết)
+}
+
+class QuảnLýChiNhánh {
+  - chiNhánhId : int
+  - tênChiNhánh : String
+  - địaChỉ : String
+  + xemThốngKê()
+  + phêDuyệtBài(bài:BàiViết)
+}
+
+class BàiViết {
+  - bàiViếtId : int
+  - tiêuĐề : String
+  - nộiDung : String
+  - ngàyĐăng : DateTime
+  - trạngThái : String
+  - lượtXem : int
+  - lượtThích : int
+  + đăngBài()
+  + cậpNhậtBàiViết()
+  + xóaBài()
+}
+
+class BìnhLuận {
+  - bìnhLuậnId : int
+  - nộiDung : String
+  - ngườiBìnhLuận : String
+  - thờiGian : DateTime
+}
+
+class TàiKhoản {
+  - email : String
+  - mậtKhẩuHash : String
+  - vaiTrò : String
+  + kiểmTraĐăngNhập(email:String, mậtKhẩu:String) : boolean
+}
+
+'==============================
+' Các mối quan hệ
+'==============================
+
+HệThống "1" o-- "*" NhânViênTruyềnThông : quản lý
+HệThống "1" o-- "*" QuảnLýChiNhánh : quản lý
+HệThống "1" o-- "*" BàiViết : lưu trữ
+
+NhânViênTruyềnThông "1" --> "*" BàiViết : tạo / chỉnh sửa
+QuảnLýChiNhánh "1" --> "*" BàiViết : phê duyệt
+BàiViết "1" *-- "*" BìnhLuận : chứa
+
+NhânViênTruyềnThông "1" -- "1" TàiKhoản : sử dụng
+QuảnLýChiNhánh "1" -- "1" TàiKhoản : sử dụng
+BìnhLuận --> TàiKhoản : được đăng bởi
+
+@enduml
