@@ -1,0 +1,40 @@
+@startuml
+'==============================
+' Cấu hình bố cục và đường nối
+'==============================
+skinparam linetype ortho
+skinparam packageStyle rectangle
+skinparam defaultTextAlignment center
+left to right direction
+
+'==============================
+' Các nhóm chính (packages)
+'==============================
+package "Người dùng &\nHệ thống (UI)" as UI {
+  ' Giao diện người dùng và hệ thống chính
+}
+
+package "Dữ liệu truyền\nthông (Service)" as Service {
+  ' Quản lý bài viết, bình luận, tương tác
+}
+
+package "Quản lý tài khoản\n(Auth & User)" as Auth {
+  ' Xác thực người dùng, quyền hạn, thông tin đăng nhập
+}
+
+package "Chi nhánh &\nthống kê (Manager)" as Manager {
+  ' Quản lý chi nhánh, doanh thu, báo cáo
+}
+
+'==============================
+' Quan hệ giữa các package
+'==============================
+UI ..> Auth : xác thực / đăng nhập
+UI ..> Service : tạo / xem bài viết
+UI ..> Manager : truy cập dữ liệu
+
+Service ..> Auth : gắn người đăng
+Manager ..> Service : phê duyệt / thống kê
+Manager ..> Auth : phân quyền quản lý
+
+@enduml
