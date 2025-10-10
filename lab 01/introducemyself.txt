@@ -1,0 +1,20 @@
+
+Hello, my name is Ho Thi Cam.  
+I am currently a third year student majoring in Multimedia Technology at the Institute of Posts and Telecommunications Technology, PTIT.
+
+🔹 Interests:
+- Software requirements and system analysis  
+- Web and mobile application development  
+- Artificial Intelligence and Machine Learning  
+
+🔹 Skills:
+- Programming languages: Python, JavaScript, SQL, HTML  
+- Tools: Git, Visual Studio Code, Jira, MySQL  
+- Development process: Agile - Scrum, Waterfall  
+
+🔹 Goals:
+- To become a professional software engineer  
+- To contribute to real-world software projects  
+- To keep learning about new technologies and trends in the IT industry  
+
+Thank you for reading my introduction.
